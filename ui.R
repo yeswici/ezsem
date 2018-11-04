@@ -1,0 +1,65 @@
+
+file.accept <- c("text/csv", "text/comma-separated-values,text/plain", ".csv")
+
+shinyUI(fluidPage(
+  titlePanel("Easy Structural Equation Models"),
+  
+  
+  tabsetPanel(type = "tabs",
+              tabPanel("Data",
+                       fileInput("file", "CSV file", accept = file.accept),
+                       tags$hr(),
+                       
+                       tags$head(
+                         tags$link(rel = "stylesheet", type = "text/css", href = "my.css")
+                       ),
+                       
+                       DT::dataTableOutput("data")),
+              
+              tabPanel("Variable",
+                       
+                       fluidRow(
+                         column(4, 
+                                h4("Numbers and factors used for explanatory variables"),
+                                htmlOutput("vec.obj")),
+                         
+                         #http://stla.github.io/stlapblog/posts/shiny_editTable.html
+                         column(4, 
+                                h4("Latent variable"),
+                                rhandsontable::rHandsontableOutput("latent.variable")),
+                         
+                         column(4, 
+                                h4("Explanatory variable"),
+                                htmlOutput("vec.last"))
+                       ),
+                       
+                       tags$hr(),
+                       tags$head(
+                         tags$link(rel = "stylesheet", type = "text/css", href = "my.css")
+                       ),
+                       DT::dataTableOutput("last.data")
+              ),
+              
+
+              
+              tabPanel("Model",
+                       rhandsontable::rHandsontableOutput("model"),
+                       tags$hr(),
+                       verbatimTextOutput("imp.fit.text"),
+                       
+                       tabsetPanel(type = "tabs",
+                                   tabPanel("Model", verbatimTextOutput("model.text")),
+                                   tabPanel("Summary", 
+                                            verbatimTextOutput("summary"),
+                                            verbatimTextOutput("model.fit")),
+                                   tabPanel("Plot",
+                                            
+                                            DiagrammeR::grVizOutput("plot"))
+                                   
+                                   
+                                   )
+                      )
+              )
+  )
+
+)
