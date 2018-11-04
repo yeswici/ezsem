@@ -45,7 +45,7 @@ shinyUI(fluidPage(
               tabPanel("Model",
                        rhandsontable::rHandsontableOutput("model"),
                        tags$hr(),
-                       verbatimTextOutput("imp.fit.text"),
+                       textOutput("imp.fit.text"),
                        
                        tabsetPanel(type = "tabs",
                                    tabPanel("Model", verbatimTextOutput("model.text")),

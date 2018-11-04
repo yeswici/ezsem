@@ -95,7 +95,7 @@ shinyServer(function(input, output, session) {
           
           output$model.fit <- renderPrint({fitMeasures(sem.result())})
           
-          output$imp.fit.text <- renderPrint({imp.fit(sem.result())$text})
+          output$imp.fit.text <- renderPrint({cat(imp.fit(sem.result())$text)})
           
           output$plot <- DiagrammeR::renderGrViz({ezsem.plot(sem.result())})
 

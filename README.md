@@ -62,10 +62,3 @@ SOFTWARE.
 
 ### Auther
 Toshihiro Iguchi
-
-# git
-# ezsem
-# ezsem
-# ezsem
-# ezsem
-# ezsem

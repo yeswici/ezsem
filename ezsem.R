@@ -49,6 +49,7 @@ df.model.input <- function(input.df){
   }
 
 ezsem <- function(model, data, estimator = "ML"){
+  if(is.null(model) || is.null(data)){return(NULL)}
   res <- try(sem(model = model, data = data, estimator = estimator), silent = FALSE)
   if(class(res) == "try-error"){return(NULL)}else{
     return(res)
@@ -56,6 +57,8 @@ ezsem <- function(model, data, estimator = "ML"){
 }
 
 ezsem.plot <- function(model, font = "Japan1GothicBBB"){
+  
+  if(is.null(model)){return(NULL)}
   
   gc();gc()
   #https://cran.rstudio.com/web/packages/lavaanPlot/vignettes/Intro_to_lavaanPlot.html
