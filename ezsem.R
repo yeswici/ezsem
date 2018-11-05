@@ -102,11 +102,14 @@ lv.sel <- function(input.lv){
   return(vec)
 }
 
-df.fac.num <- function(df, vec){
+df.fac.num <- function(df, vec, scale = TRUE){
   if(is.null(df) || is.null(vec)){return(NULL)}
   form <- paste0("~", paste(vec, collapse = " + "))
   form <- as.formula(form)
   ret <- model.matrix(form, df)[, -1] #-1は切片除去
+  
+  if(scale){ret <- scale(ret)}
+  
   return(ret)
 }
 

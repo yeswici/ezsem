@@ -51,14 +51,20 @@ shinyUI(fluidPage(
                                    tabPanel("Model", verbatimTextOutput("model.text")),
                                    tabPanel("Summary", 
                                             verbatimTextOutput("summary"),
-                                            verbatimTextOutput("model.fit")),
-                                   tabPanel("Plot",
+                                            verbatimTextOutput("model.fit"),
+                                            verbatimTextOutput("model.modification")),
+                                   tabPanel("Plot", plotOutput("semplot")),
+                                   tabPanel("Graph",
                                             
                                             DiagrammeR::grVizOutput("plot"))
                                    
                                    
                                    )
-                      )
+                      ),
+              tabPanel("Setting",
+                       h4("Data scaling"),
+                       checkboxInput("data.scale", label = "Scale", value = TRUE))
+              
               )
   )
 

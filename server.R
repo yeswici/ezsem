@@ -5,6 +5,7 @@ library(rhandsontable)
 library(lavaan)
 library(DiagrammeR)
 library(lavaanPlot)
+library(semPlot)
 
 
 #関連ファイル呼び出し。
@@ -37,7 +38,11 @@ shinyServer(function(input, output, session) {
     observeEvent(input$data_rows_all, {
       
       #DTで選択した部分と、解析に使用できるデータのみ抜粋。
-      proc.data <- reactive({as.worth(data.rows(raw.data(), input$data_rows_all))})
+      proc.data <- reactive({
+        as.worth(
+          data.rows(raw.data(), input$data_rows_all)
+          )
+        })
       
       #変数選択(因子はそのまま)
       output$vec.obj <- renderUI({ 
@@ -56,7 +61,9 @@ shinyServer(function(input, output, session) {
       observeEvent(input$vec.obj,{
         
         #因子を数値に変換したデータ
-        num.data <- reactive({df.fac.num(df = proc.data(), vec = input$vec.obj)})
+        num.data <- reactive({
+          df.fac.num(df = proc.data(), vec = input$vec.obj, scale = input$data.scale)
+          })
         
         #最終的な変数選択
         output$vec.last <- renderUI({ 
@@ -95,7 +102,12 @@ shinyServer(function(input, output, session) {
           
           output$model.fit <- renderPrint({fitMeasures(sem.result())})
           
+          #https://rstudio-pubs-static.s3.amazonaws.com/10828_e6380adea6c44ee18358ae42ba0cc89c.html
+          output$model.modification <- renderPrint({modificationindices(sem.result())})
+          
           output$imp.fit.text <- renderPrint({cat(imp.fit(sem.result())$text)})
+          
+          output$semplot <- renderPlot(semPlot::semPaths(sem.result(), "std"))
           
           output$plot <- DiagrammeR::renderGrViz({ezsem.plot(sem.result())})
 
