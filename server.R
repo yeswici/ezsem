@@ -75,9 +75,8 @@ shinyServer(function(input, output, session) {
         
         #データを表示
         #https://github.com/rstudio/shinydashboard/issues/22
-        output$last.data <- renderDT(num.data(), 
+        output$last.data <- renderDT(signif(num.data(),4), 
                                 server = TRUE,
-                                #filter = "top",
                                 selection = "none",
                                 options = list(autoWidth = TRUE))
         
