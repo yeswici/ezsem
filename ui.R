@@ -61,9 +61,15 @@ shinyUI(fluidPage(
                                    
                                    )
                       ),
+              
+              
               tabPanel("Setting",
                        h4("Data scaling"),
-                       checkboxInput("data.scale", label = "Scale", value = TRUE))
+                       checkboxInput("data.scale", label = "Scale", value = TRUE),
+                       
+                       h4("SEM"),
+                       selectInput("estimator", label = "Estimator", 
+                                   choices = c("ML", "MLR", "WLS", "DWLS")))
               
               )
   )

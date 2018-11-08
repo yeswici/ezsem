@@ -92,7 +92,8 @@ shinyServer(function(input, output, session) {
           output$model.text <- renderText({df.model.input(input$model)})
           
           sem.result <- reactive({
-            ezsem(df.model.input(input$model), num.data())
+            ezsem(df.model.input(input$model), num.data(), 
+                  estimator = input$estimator)
             })
           
           output$summary <- renderPrint({
