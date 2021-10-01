@@ -13,7 +13,7 @@ First install related packages.
     
 If packages are installed, it can be started from R console with the following command.
     
-    shiny::runGitHub("ezsem", "ToshihiroIguchi")
+    shiny::runGitHub("ezsem", "yeswici")
     
     
 ### Host
@@ -29,7 +29,7 @@ Enter the following command in R console.
     ip <- gsub(".*? ([[:digit:]])", "\\1", ipv4.dat)
 
     #Host the Shiny application from GitHub
-    shiny::runGitHub("ezsem", "ToshihiroIguchi", launch.browser = FALSE, port = port, host = ip)
+    shiny::runGitHub("ezsem", "ToshihiroIguchi", launch.browser = TRUE, port = port, host = ip)
 
 If you are in the private network, you can also launch the Shiny application by entering the URL following `Listing on` to the browser.
 
