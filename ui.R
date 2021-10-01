@@ -2,7 +2,7 @@
 file.accept <- c("text/csv", "text/comma-separated-values,text/plain", ".csv")
 
 shinyUI(fluidPage(
-  titlePanel("Easy Structural Equation Models"),
+  titlePanel("Web Structural Equation Models"),
   
   
   tabsetPanel(type = "tabs",
