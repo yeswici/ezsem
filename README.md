@@ -1,8 +1,8 @@
 ## ezsem
-Easy Structural Equation Models.
+Web Structural Equation Models.
 
 ### Description
-Easy Structural Equation Models.
+Web Structural Equation Models.
 
 ### Launch web application
 First, access [CRAN](https://cran.r-project.org/), download R and install.
@@ -60,5 +60,3 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-### Auther
-Toshihiro Iguchi
