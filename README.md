@@ -13,7 +13,7 @@ First install related packages.
     
 If packages are installed, it can be started from R console with the following command.
     
-    shiny::runGitHub("ezsem", "yeswici")
+    shiny::runGitHub("websem", "yeswici")
     
     
 ### Host
